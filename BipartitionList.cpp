@@ -1,6 +1,10 @@
 
 /********************
 
+Adopted PhyloBayes MPI. https://github.com/bayesiancook/pbmpi
+Lartillot, N., Rodrigue, N., Stubbs, D. & Richer, J. 
+PhyloBayes MPI: Phylogenetic reconstruction with infinite mixtures of profiles in a parallel environment. Syst. Biol. 62, 611–615 (2013).
+
 **********************/
 
 #include "phylo.h"

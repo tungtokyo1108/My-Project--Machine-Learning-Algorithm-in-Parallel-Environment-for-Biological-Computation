@@ -1,15 +1,9 @@
 
 /********************
 
-PhyloBayes MPI. Copyright 2010-2013 Nicolas Lartillot, Nicolas Rodrigue, Daniel Stubbs, Jacques Richer.
-
-PhyloBayes is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
-PhyloBayes is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-
-See the GNU General Public License for more details. You should have received a copy of the GNU General Public License
-along with PhyloBayes. If not, see <http://www.gnu.org/licenses/>.
+Adopted PhyloBayes MPI. https://github.com/bayesiancook/pbmpi
+Lartillot, N., Rodrigue, N., Stubbs, D. & Richer, J. 
+PhyloBayes MPI: Phylogenetic reconstruction with infinite mixtures of profiles in a parallel environment. Syst. Biol. 62, 611â€“615 (2013).
 
 **********************/
 
@@ -59,7 +53,7 @@ Random& rnd::GetRandom(int i)	{
 
 
 // ---------------------------------------------------------------------------------
-//		¥ Random()
+//		Â¥ Random()
 // ---------------------------------------------------------------------------------
 
 void Random::InitRandom(int seed)	{
@@ -91,7 +85,7 @@ int Random::GetSeed()	{
 }
 
 // ---------------------------------------------------------------------------------
-//		¥ Uniform()
+//		Â¥ Uniform()
 // ---------------------------------------------------------------------------------
 
 
@@ -168,7 +162,7 @@ double Random::Uniform() {
 
 
 // ---------------------------------------------------------------------------------
-//		¥ Gamma()
+//		Â¥ Gamma()
 // ---------------------------------------------------------------------------------
 
 double Random::Gamma(double alpha, double beta)	{
@@ -178,7 +172,7 @@ double Random::Gamma(double alpha, double beta)	{
 
 
 // ---------------------------------------------------------------------------------
-//		¥ DrawFromDiscreteDistribution()
+//		Â¥ DrawFromDiscreteDistribution()
 // ---------------------------------------------------------------------------------
 
 
@@ -234,7 +228,7 @@ int Random::DrawFromLogDiscreteDistribution(double* ll, int nstate)	{
 
 
 // ---------------------------------------------------------------------------------
-//		¥ DrawFromUrn()
+//		Â¥ DrawFromUrn()
 // ---------------------------------------------------------------------------------
 
 void Random::DrawFromUrn (int* tab , int n, int N)	{	// draw n out of N
@@ -299,7 +293,7 @@ void Random::DrawFromUrn (int* tab , int n, int N)      {       // draw n out of
 */
 
 // ---------------------------------------------------------------------------------
-//		¥ Choose()
+//		Â¥ Choose()
 // ---------------------------------------------------------------------------------
 
 
@@ -334,7 +328,7 @@ int Random::FiniteDiscrete(int n, const double* probarray)	{
 }
 
 // ---------------------------------------------------------------------------------
-//		¥ sNormal()
+//		Â¥ sNormal()
 // ---------------------------------------------------------------------------------
 
 
@@ -383,7 +377,7 @@ double Random::sNormal(void)	{
 		 
 
 // ---------------------------------------------------------------------------------
-//		¥ sExpo()
+//		Â¥ sExpo()
 // ---------------------------------------------------------------------------------
 
 double Random::sExpo() {
@@ -401,7 +395,7 @@ else return num;
 
 
 // ---------------------------------------------------------------------------------
-//		¥ sGamma()
+//		Â¥ sGamma()
 // ---------------------------------------------------------------------------------
 
 double Random::sGamma(double a) {

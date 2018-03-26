@@ -1,6 +1,9 @@
 
 /********************
 
+Copyright 2016-2018 Dang Thanh Tung, Hirohisa Kishino
+Fast Computational version of PhyloBayes MPI is free software which replace the sampling algorithm by fast optimization  
+algorithm : you can redistribute it and/or modify it under the terms of the GNU General Public License.
 
 **********************/
 

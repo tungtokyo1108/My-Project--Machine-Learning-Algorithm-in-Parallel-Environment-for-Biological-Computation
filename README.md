@@ -5,9 +5,9 @@ Note: All files have name like "....VI.h/cpp" which we have updated new optimiza
 
 Submitted publication
 ------------------------------------------------------------------------------------------------------------------------------------------
-Fast Computational Software for Biological Database via Stochastic Variational Algorithm in Parallel Environment 
+Title: Fast Computational Software for Biological Database via Stochastic Variational Algorithm in Parallel Environment 
 
-Dang Thanh Tung and Hirohisa Kishino
+Authors: Dang Thanh Tung and Hirohisa Kishino
 
 Submitted journal: https://academic.oup.com/mbe 
 

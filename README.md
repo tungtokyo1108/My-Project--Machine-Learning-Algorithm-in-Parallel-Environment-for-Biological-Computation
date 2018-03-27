@@ -5,4 +5,4 @@ Note: All files have name like "....VI.h/cpp" which we have updated new optimiza
 
 Submitted publication
 ------------------------------------------------------------------------------------------------------------------------------------------
- 
+Fast Computational Software for Biological Database via Stochastic Variational Algorithm in Parallel Environment 

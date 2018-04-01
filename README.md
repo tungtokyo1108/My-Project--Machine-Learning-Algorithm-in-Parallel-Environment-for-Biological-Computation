@@ -3,13 +3,13 @@ a model of biological computation on large data set.
 
 Note: All files have name like "....VI.h/cpp" which we have updated new optimization algorithm for computating the parameters of model
 
-Submitted publication
+Preparing publication
 ------------------------------------------------------------------------------------------------------------------------------------------
 Title: Fast Computational Software for Biological Database via Stochastic Variational Algorithm in Parallel Environment 
 
 Authors: Dang Thanh Tung and Hirohisa Kishino
 
-Submitted journal: https://academic.oup.com/mbe 
+Preferred journal: https://academic.oup.com/mbe 
 
 Abstract 
 -----------------------------------------------------------------------------------------------------------------------------------------

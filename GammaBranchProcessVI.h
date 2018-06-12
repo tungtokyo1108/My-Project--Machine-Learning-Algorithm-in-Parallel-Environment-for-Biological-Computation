@@ -14,7 +14,6 @@ algorithm : you can redistribute it and/or modify it under the terms of the GNU 
 #include "TaxonSet.h"
 #include "BranchProcessVI.h"
 #include "RateProcessVI.h"
-#include <gsl/gsl_sf_psi.h>
 #include "Random.h"
 
 class GammaBranchProcessVI : public virtual BranchProcessVI {
@@ -26,40 +25,12 @@ class GammaBranchProcessVI : public virtual BranchProcessVI {
         
 	double LogBranchLengthPrior(const Branch* branch);
 
-        /*void TotalParameterLength() {
-            
-            TotalParaLength = 0;
-            for(int i=1; i<GetNbranch(); i++) {
-               TotalParaLength += (branchalphaVI[i] / branchbetaVI[i]);
-            }
-        }
-
-        double TotalParaLength;
-        double GetTotalParaLength() {return TotalParaLength;}
-
-        //------------------------------------------------------
-        void TotalParameterRate() {
-             
-             TotalParaRate = 0;
-               for(int i=0; i<GetNsite(); i++) {
-               TotalParaRate += (RateAlphaVI[i]/RateBetaVI[i]);
-               }  
-        }
-
-        double TotalParaRate;
-        double GetTotalParaRate() {return TotalParaRate;}*/
-        //------------------------------------------------------
-
         double DQBranchAlpha(const Branch* branch);
         double DQBranchBeta(const Branch* branch);   
         double ELBOLength();
         double ELBO_Length;
         double GlobalELBOLength();
-        void SlaveELBOLength();
-     
-        /*double GetbranchalphaVI(int GetNbranch()) {return branchalphaVI[GetNbranch()];}
-        double GetbranchbetaVI(int GetNbramch())  {return branchbetaVI[GetNbranch()];}*/        
-
+        void SlaveELBOLength();       
         void EstimateBranchParameter();
         void SlaveEstimateBranchParameter();
         void GlobalEstimateBranchParameter();
@@ -92,30 +63,12 @@ class GammaBranchProcessVI : public virtual BranchProcessVI {
                 branchbeta = 10;
                 taubranch = 1;
                 kappabranch = 0.5;
-                /*LearningRateBranch = new double[GetNbranch()];
-                branchalphaVI = new double[GetNbranch()];
-                branchbetaVI = new double[GetNbranch()];
-                branchalphahat = new double[GetNbranch()];
-                branchbetahat = new double[GetNbranch()];
-                for (int i=1; i<GetNbranch(); i++)	{
-                     // branchalphaVI[i] = rnd::GetRandom().sExpo();
-                     // branchbetaVI[i] = rnd::GetRandom().sExpo();
-                     branchalphaVI[i] = 1;
-                     branchbetaVI[i] = 10;
-                }*/
-		// RecursiveSampleLength(GetRoot());
 	}
 
 	void Delete() {}
         void TotalParameterLength();
         double GetTotalParaLength() {return TotalParaLength;}
         double TotalParaLength;        
-
-	/*double* branchalphaVI;
-	double* branchbetaVI;
-        double* branchalphahat;
-        double* branchbetahat;
-        double* LearningRateBranch;*/
         double branchalpha;
         double branchbeta;
         double taubranch;

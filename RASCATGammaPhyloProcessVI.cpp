@@ -235,30 +235,6 @@ void RASCATGammaPhyloProcessVI::SlaveUpdateParameters()	{
 	UpdateZip();
 }
 
-/*double RASCATGammaPhyloProcessVI::CheckELBO()  {
-
-       GetTotalSitePCAT();
-       
-       ELBO += ELBORate() + ELBOLength() + ELBOWeight() + ELBOkappa() + ELBODirWeight(); 
-       for (int k=0; k<GetNcomponent(); k++)  {
-            for (int i=0; i<GetDim(); i++)       {
-                 ELBO += (GetPCAT(k) * (gsl_sf_psi(dirweightVI[k][i]) - TotDirWeightVI(k,i)));
-            }
-       }
-       for (int i=GetSiteMin(); i<GetSiteMax(); i++)  {
-            ELBO += (GetSiteRateSuffStatCount(i) * (gsl_sf_psi(GetRateAlphaVI(i)) - log(GetRateBetaVI(i))));     
-       }
-       for (int j=1; j<GetNbranch(); j++)  {
-            ELBO += (GetBranchLengthSuffStatCount(j) * (gsl_sf_psi(GetbranchalphaVI(j)) - log(GetbranchbetaVI(j))));
-       }
-       for (int i=GetSiteMin(); i<GetSiteMax(); i++)   {
-            for (int j=1; j<GetNbranch(); j++)              {
-                 ELBO -= ((GetbranchalphaVI(j) / GetbranchbetaVI(j)) * (GetRateAlphaVI(i) / GetRateBetaVI(i)));
-            }
-       }
-       return ELBO;
-}*/
-
 void RASCATGammaPhyloProcessVI::ReadPB(int argc, char* argv[])	{
 
 	string name = "";

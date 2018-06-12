@@ -175,20 +175,7 @@ class RASCATGammaPhyloProcessVI : public virtual PoissonPhyloProcess, public vir
 	~RASCATGammaPhyloProcessVI() {
 		Delete();
 	}
-
-	double GetLogProb()	{
-		return GetLogPrior() + GetLogLikelihood();
-	}
-
-	double GetLogPrior()	{
-		// yet to be implemented
-		return 0;
-	}
-
-	double GetLogLikelihood()	{
-		return logL;
-	}
-
+	
         double ELBO;
         double pre_lower_bound;
         double lower_bound;
@@ -199,9 +186,8 @@ class RASCATGammaPhyloProcessVI : public virtual PoissonPhyloProcess, public vir
         // double CheckELBO();        
 
 	void TraceHeader(ostream& os)	{
-		os << "#iter\ttime\ttopo\tloglik\tlength\talphaVI\tNmode\tstatent";
-                // os << "\ELBO";
-		os << "\tkappaVI\tallocent";
+		os << "#iter\ttime\ttopo\tlength\tNmode\tstatent";
+                os << "\ELBO";
 		os << '\n'; 
 	}
 
@@ -219,11 +205,9 @@ class RASCATGammaPhyloProcessVI : public virtual PoissonPhyloProcess, public vir
 			os << '\t' << 0;
 		}
 
-		os << '\t' << GetLogLikelihood() << '\t' << GetRenormTotalLength() << '\t' << GetAlpha();
+		os << '\t' << GetRenormTotalLength();
 		os << '\t' << GetNOccupiedComponent() << '\t' << GetStatEnt();
                 os << '\t' << change;
-		// os << '\t' << GetMeanDirWeight();
-		// os << '\t' << kappa_alpha << '\t' << GetAllocEntropy();
 
 		os << '\n';
 	}

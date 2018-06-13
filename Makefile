@@ -3,13 +3,10 @@
 USE_GSL=-DGSL
 
 ifdef USE_GSL
-GSLLIB=-lgsl -lgslcblas
+GSLLIB=-lgsl
 else
 GSLLIB=
 endif
-
-LIBS=$(GSLLIB)
-
 
 CC=mpic++
 CPPFLAGS= -w -O3 -c $(USE_GSL) $(INCLUDES)

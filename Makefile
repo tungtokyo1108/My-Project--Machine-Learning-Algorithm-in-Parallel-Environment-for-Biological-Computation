@@ -13,7 +13,6 @@ LIBS=$(GSLLIB)
 
 CC=mpic++
 CPPFLAGS= -w -O3 -c $(USE_GSL) $(INCLUDES)
-LDFLAGS= -O3
 SRCS=   TaxonSet.cpp Tree.cpp Random.cpp SequenceAlignment.cpp CodonSequenceAlignment.cpp \
 	StateSpace.cpp CodonStateSpace.cpp ZippedSequenceAlignment.cpp SubMatrix.cpp \
 	linalg.cpp Chrono.cpp \
@@ -22,10 +21,9 @@ SRCS=   TaxonSet.cpp Tree.cpp Random.cpp SequenceAlignment.cpp CodonSequenceAlig
 	SubstitutionProcess.cpp \
 	PoissonSubstitutionProcess.cpp \
 	PhyloProcess.cpp PoissonPhyloProcess.cpp \
-	Bipartition.cpp BipartitionList.cpp Consensus.cpp TaxaParameters.cpp PBTree.cpp TreeList.cpp PolyNode.cpp correl.cpp correlation.cpp NNI.cpp\
+	Bipartition.cpp BipartitionList.cpp TaxaParameters.cpp TreeList.cpp PolyNode.cpp correl.cpp correlation.cpp NNI.cpp\
         GammaBranchProcessVI.cpp GammaRateProcessVI.cpp  PoissonDPProfileProcessVI.cpp PoissonMixtureProfileProcessVI.cpp PoissonSBDPProfileProcessVI.cpp RASCATGammaPhyloProcessVI.cpp RASCATSBDPGammaPhyloProcessVI.cpp \
         MixtureProfileProcessVI.cpp DPProfileProcessVI.cpp SBDPProfileProcessVI.cpp RateProcessVI.cpp BranchProcessVI.cpp\
-	BP2Stat.cpp BP2util.cpp
 
 
 OBJS=$(patsubst %.cpp,%.o,$(patsubst %.c,%.o,$(SRCS)))

@@ -144,16 +144,6 @@ void PhyloProcess::DeleteConditionalLikelihoods()	{
 	condflag = false;
 }
 
-/*void PhyloProcess::UpdateConditionalLikelihoods()	{
-	PostOrderPruning(GetRoot(),condlmap[0]);
-
-	// not necessary
-	// MultiplyByStationaries(condlmap[0]);
-	ComputeLikelihood(condlmap[0]);
-
-	// PreOrderPruning(GetRoot(),condlmap[0]);
-}*/
-
 void PhyloProcess::UpdateConditionalLikelihoods()  {
 
         PostOrderPruning(GetRoot(),condlmap[0]);
@@ -205,44 +195,6 @@ void PhyloProcess::CheckLikelihood()	{
 	}
 }
 
-/*double PhyloProcess::ComputeNodeLikelihood(const Link* from, int auxindex)	{
-
-	if (! myid)	{
-		cerr << "error : master doing slave's work\n";
-		exit(1);
-	}
-	double** aux = 0;
-	bool localaux = false;
-	if (auxindex != -1)	{
-		aux = condlmap[auxindex];
-	}
-	else	{
-		localaux = true;
-		aux = CreateConditionalLikelihoodVector();
-	}
-
-	if (from->isLeaf())	{
-		Initialize(aux,GetData(from));
-	}
-	else	{
-		Reset(aux);
-	}
-	if (! from->isRoot())	{
-		Multiply(GetConditionalLikelihoodVector(from),aux);
-	}
-	for (const Link* link=from->Next(); link!=from; link=link->Next())	{
-		if (! link->isRoot())	{
-			Multiply(GetConditionalLikelihoodVector(link),aux);
-		}
-	}
-	MultiplyByStationaries(aux);
-	double lnL = ComputeLikelihood(aux);
-	if (localaux)	{
-		DeleteConditionalLikelihoodVector(aux);
-	}
-	return lnL;
-}*/
-
 double PhyloProcess::ComputeNodeLikelihood(const Link* from, int auxindex) {
 
        if (! myid)  {
@@ -280,28 +232,6 @@ double PhyloProcess::ComputeNodeLikelihood(const Link* from, int auxindex) {
        
 }
 
-/*void PhyloProcess::PostOrderPruning(const Link* from, double** aux)	{
-
-	if (from->isLeaf())	{
-		Initialize(aux,GetData(from));
-	}
-	else	{
-		for (const Link* link=from->Next(); link!=from; link=link->Next())	{
-			PostOrderPruning(link->Out(),aux);
-			Propagate(aux,GetConditionalLikelihoodVector(link),GetLength(link->GetBranch()));
-		}
-		Reset(aux);
-		for (const Link* link=from->Next(); link!=from; link=link->Next())	{
-			Multiply(GetConditionalLikelihoodVector(link),aux);
-		}
-		Offset(aux);
-	}
-	if (from->isRoot())	{
-		// copy aux into GetConditionalLikelihoodVector(root) ?
-		// or aux IS the conditional likelihood vector of the root ?
-	}	
-}*/
-
 void PhyloProcess::PostOrderPruning(const Link* from, double** aux)  {
 
      if (from->isLeaf())  {
@@ -314,31 +244,6 @@ void PhyloProcess::PostOrderPruning(const Link* from, double** aux)  {
              }
      }
 }
-
-/*void PhyloProcess::PreOrderPruning(const Link* from, double** aux)	{
-
-	for (const Link* link=from->Next(); link!=from; link=link->Next())	{
-		Reset(aux);
-		for (const Link* link2=link->Next(); link2!=link; link2=link2->Next())	{
-			if (! link2->isRoot())	{
-				Multiply(GetConditionalLikelihoodVector(link2),aux);
-			}
-		}
-		// Here, in principle
-		// should be done even if link->Out()->isLeaf()
-		// in order for all the conditional likelihood vectors, including those at the leaves, to be updated
-		// but in practice, the leaf likelihood vectors are not used anyway (and they represent half of the whole set of likelihood vectors)
-		// so not computing them saves 50% CPU time
-		if (! link->Out()->isLeaf())	{
-			Propagate(aux,GetConditionalLikelihoodVector(link->Out()),GetLength(link->GetBranch()));
-		}
-	}
-	for (const Link* link=from->Next(); link!=from; link=link->Next())	{
-		if (! link->Out()->isLeaf())	{
-			PreOrderPruning(link->Out(),aux);
-		}
-	}
-}*/
 
 void PhyloProcess::PreOrderPruning(const Link* from, double** aux)  {
 
@@ -403,36 +308,6 @@ void PhyloProcess::RecursiveSimulateForward(const Link* from)	{
 	}
 }
 
-
-/*void PhyloProcess::SampleNodeStates(const Link* from, double** aux)	{
-	
-	if (from->isLeaf())	{
-		Initialize(aux,GetData(from));
-	}
-	else	{
-		Reset(aux,true);
-	}
-	// make product of conditional likelihoods around node
-	for (const Link* link=from->Next(); link!=from; link=link->Next())	{
-		Multiply(GetConditionalLikelihoodVector(link),aux,true);
-	}
-	if (!from->isRoot())	{
-		Multiply(GetConditionalLikelihoodVector(from),aux,true);
-	}
-	MultiplyByStationaries(aux,true);
-	// let substitution process choose states based on this vector
-	// this should collapse the vector into 1s and 0s
-	ChooseStates(aux,GetStates(from->GetNode()));
-
-	for (const Link* link=from->Next(); link!=from; link=link->Next())	{
-		// propagate forward
-		Propagate(aux,GetConditionalLikelihoodVector(link->Out()),GetLength(link->GetBranch()),true);
-	}
-	for (const Link* link=from->Next(); link!=from; link=link->Next())	{
-		SampleNodeStates(link->Out(),aux);
-	}
-}*/
-
 void PhyloProcess::SampleNodeStates(const Link* from, double** aux)  {
  
      if (from->isLeaf())  {
@@ -463,19 +338,6 @@ void PhyloProcess::SampleSubstitutionMappings(const Link* from)	{
 		SampleSubstitutionMappings(link->Out());
 	}
 }
-
-/*void PhyloProcess::SampleSubstitutionMappings(const Link* from)    {
-
-        if (from->isRoot())   {
-               submap[0] = SampleRootPaths(GetStates(from->GetNode()));
-        }
-        else   {
-               submap[GetBranchIndex(from->GetBranch())] = SamplePathsVI(GetStates(from->Out()->GetNode()), GetStates(from->GetNode()), GetBranchAlpha(from->GetBranch()), GetBranchBeta(from->GetBranch()));
-        }
-        for (const Link* link=from->Next(); link!=from; link=link->Next())  {
-               SampleSubstitutionMappings(link->Out());
-        }
-}*/
 
 double PhyloProcess::NumberTypeSubstitution(const Link* from)     {
   
@@ -556,52 +418,6 @@ double PhyloProcess::BranchLengthMove(double tuning)	{
 	double total = RecursiveBranchLengthMove(GetRoot(),tuning,n);
 	return total / n;
 }
-
-// assumes aux contains the product of incoming likelihoods
-/*double PhyloProcess::RecursiveBranchLengthMove(const Link* from, double tuning, int& n)	{
-
-	// uses condlmap[0] as auxiliary variable
-	double total = 0;
-
-	if (! from->isRoot())	{
-		total += LocalBranchLengthMove(from,tuning);
-		n++;
-	}
-	
-	for (const Link* link=from->Next(); link!=from; link=link->Next())	{
-		GlobalReset(0);
-		// Reset(condlmap[0]);
-		for (const Link* link2=link->Next(); link2!=link; link2=link2->Next())	{
-			if (! link2->isRoot())	{
-				GlobalMultiply(link2,0);
-				// Multiply(GetConditionalLikelihoodVector(link2),condlmap[0]);
-			}
-		}
-		total += RecursiveBranchLengthMove(link->Out(),tuning,n);
-	}
-
-	if (from->isLeaf())	{
-		GlobalInitialize(0,from);
-		// Initialize(condlmap[0],GetData(from));
-	}
-	else	{
-		GlobalReset(0);
-		// Reset(condlmap[0]);
-		for (const Link* link=from->Next(); link!=from; link=link->Next())	{
-			if (! link->isRoot())	{
-				GlobalMultiply(link,0);
-				// Multiply(GetConditionalLikelihoodVector(link),condlmap[0]);
-			}
-		}
-	}
-	
-	if (! from->isRoot())	{
-		total += LocalBranchLengthMove(from->Out(),tuning); // Pourquoi 'Out' ??? 
-		n++;
-	}
-
-	return total;
-};*/
 
 double PhyloProcess::RecursiveBranchLengthMove(const Link* from, double tuning, int& n)  {
 

@@ -143,15 +143,6 @@ double BranchProcessVI::RecursiveTotalLength(const Link* from)	{
 	return total;
 }
 
-/*double BranchProcessVI::RecursiveTotalLengthVI()	{
-	double total = 0;
-
-	for (int i=1; i<GetNbranch(); i++)	{
-		total += GetbranchalphaVI(i) / GetbranchbetaVI(i);
-	}
-	return total;
-}*/
-
 double BranchProcessVI::RecursiveTotalLengthVI(const Link* from) {
 
         double total = 0;

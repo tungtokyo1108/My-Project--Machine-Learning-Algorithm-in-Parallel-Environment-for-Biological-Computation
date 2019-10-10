@@ -9,7 +9,7 @@ Title: Stochastic Variational Inference for Bayesian Phylogenetics: A Case of CA
 
 Authors: Tung Dang and Hirohisa Kishino
 
-Preferred journal: https://academic.oup.com/mbe/article/36/4/825/5305894 
+Link: https://academic.oup.com/mbe/article/36/4/825/5305894 
 
 Our presentation (included guides of software): https://drive.google.com/file/d/16bKeL7sQQtv82Tw17euQ-y6lZP9MlHzx/view 
 

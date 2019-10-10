@@ -3,13 +3,13 @@ a model of biological computation on large data set.
 
 Note: All files have name like "....VI.h/cpp" which we have updated new optimization algorithm for computating the parameters of model
 
-Preparing publication
+Journal
 ------------------------------------------------------------------------------------------------------------------------------------------
-Title: Fast Computational Software for Biological Database via Stochastic Variational Algorithm in Parallel Environment 
+Title: Stochastic Variational Inference for Bayesian Phylogenetics: A Case of CAT Model
 
 Authors: Tung Dang and Hirohisa Kishino
 
-Preferred journal: https://academic.oup.com/mbe 
+Preferred journal: https://academic.oup.com/mbe/article/36/4/825/5305894 
 
 Our presentation (included guides of software): https://drive.google.com/file/d/16bKeL7sQQtv82Tw17euQ-y6lZP9MlHzx/view 
 
